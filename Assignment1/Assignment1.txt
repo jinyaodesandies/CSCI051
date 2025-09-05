@@ -1,0 +1,6 @@
+I spent approximately an hour and a half on the assignment
+I found learning LaTeX really interesting. I dont think people should become accustomed to using VS code for terminal. I prefer terminal.
+
+I was also wondering if I could use Pycharm?
+
+either way thank you.
