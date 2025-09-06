@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{karnaugh-map}
+
+
+
+\title{CS51 - Assignment 2\\Are you an introvert?\\{\normalsize Due: XXX at 11:59pm}}
+
+\author{WRITE YOUR NAME HERE}
+\date{\today}
+
+\parindent=0in
+
+\parskip 7.2pt 
+
+\begin{document}
+\maketitle
+
+\section{Part 1: Disjunctive and Conjunctive Normal Forms}
+
+% The following LaTex commands will be handy: \neg, \land, \lor
+
+%TODO: Fill in the minterms and maxterms on the third and second ti last columns
+\begin{displaymath}
+\begin{array}{cccc|c|c|c}
+A & B & C & D  & minterm & maxterm & I\\
+\hline
+
+0 & 0 & 0 & 0 & m_0 =   \lnot A \land \lnot B \land\lnot C \land\lnot D & M_0 =  A \lor  B \lor C \lor  D & 0 \\
+0 & 0 & 0 & 1 & m_1 =  \lnot A \land \lnot B \land\lnot C \land D& M_1 = A \lor  B \lor C \lor \lnot D & 0 \\
+0 & 0 & 1 & 0 & m_2 = \lnot A \land \lnot B \land C \land\lnot D & M_2 = A \lor  B \lor\lnot C \lor  D  & 0 \\
+0 & 0 & 1 & 1 & m_3 =\lnot A \land \lnot B \land C \land D  & M_3 =  A \lor  B \lor\lnot C \lor \lnot D & 1 \\
+0 & 1 & 0 & 0 & m_4 =\lnot A \land  B \land\lnot C \land\lnot D  & M_4 =  A \lor \lnot B \lor C \lor  D & 0 \\
+0 & 1 & 0 & 1 & m_5 =  \lnot A \land  B \land\lnot C \land D& M_5 =  A \lor \lnot B \lor\lnot C \lor \lnot D & 0 \\
+0 & 1 & 1 & 0 & m_6 =  \lnot A \land  B \land  C \land\lnot D& M_6 =  A \lor \lnot B \lor\lnot C \lor  D & 1 \\
+0 & 1 & 1 & 1 & m_7 =  \lnot A \land  B \land  C \land  D& M_7 = A \lor \lnot B \lor\lnot C \lor \lnot D  & 1 \\
+1 & 0 & 0 & 0 & m_8 =   A \land \lnot B \land\lnot C \land\lnot D& M_8 = \lnot A \lor  B \lor C \lor  D & 0 \\
+1 & 0 & 0 & 1 & m_9 = \lnot A \land \lnot B \land C \land D & \lnot M_9 =  \lnot A \lor  B \lor C \lor \lnot D& 0 \\
+1 & 0 & 1 & 0 & m_{10} = A \land  \lnot B \land C \land \lnot D  & M_{10} = \lnot A \lor  B \lor\lnot C \lor  D  & 1 \\
+1 & 0 & 1 & 1 & m_{11} =  A \land \lnot B \land C \land D & M_{11} = \lnot A \lor  B \lor\lnot C \lor \lnot D & 1 \\
+1 & 1 & 0 & 0 & m_{12} =  A \land  B \land\lnot C \land\lnot D & M_{12} =  \lnot A \lor \lnot B \lor C \lor  D & 1 \\
+1 & 1 & 0 & 1 & m_{13} =  A \land  B \land\lnot C \land D & M_{13} = \lnot A \lor \lnot B \lor C \lor \lnot D & 1 \\
+1 & 1 & 1 & 0 & m_{14} =  A \land  B \land C \land\lnot D & M_{14} \lnot A \lor \lnot B \lor\lnot C \lor  D= & 1 \\
+1 & 1 & 1 & 1 & m_{15} =  A \land  B \land C \land D& M_{15} =  \lnot A \lor \lnot B \lor\lnot C \lor \lnot D & 1
+\end{array}
+\end{displaymath}
+
+
+%TODO: Calculate the DNF and CNF for the truth table above. Make sure you indicate which minterms and maxterms you used and then, as a second step, write the full expression using the four boolean variables. 
+Disjunctive Normal Form: $I = m_3 \lor m_6 \lor m_7 \lor m_{10} \lor m_{11} \lor m_{12} \lor m_{13} \lor m_{14} \lor m_{15} =(\lnot A \land \lnot B \land C \land D) \lor (\lnot A \land  B \land  C \land\lnot D) \lor ( A \land  \lnot B \land C \land \lnot D) \lor (A \land  \lnot B \land C \land \lnot D) \lor ( A \land \lnot B \land C \land D ) \lor (A \land  B \land\lnot C \land\lnot D) \lor (A \land  B \land\lnot C \land D) \lor (A \land  B \land C \land\lnot D) \lor (A \land  B \land C \land\lnot D) \lor (A \land  B \land C \land D)  \lor (A \land  B \land C \land D)  $
+
+Conjunctive Normal Form: $I = m_1 \land m_2 \land m_3 \land m_4 \land m_5 \land m_6 \land m_7 \land m_8 \land m_9 =  ( A \lor  B \lor C \lor  D)\land (A \lor  B \lor C \lor \lnot D) \land (A \lor  B \lor\lnot C \lor  D) \land(A \lor \lnot B \lor C \lor  D)\land(A \lor \lnot B \lor\lnot C \lor \lnot D)\land(\lnot A \lor  B \lor C \lor  D) \land (\lnot A \lor  B \lor C \lor \lnot D)$
+
+\section{Part 2: K-Maps}
+
+% Option 1: You can work on pen and paper, snap a picture, upload it, and replace the following code after you uncomment it
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{example-image} % Replace with your image filename
+%     \caption{This is a sample figure caption.}
+%     \label{fig:sample}
+% \end{figure}
+
+% Option 2: You can use the karnaugh-map LaTex package to create a pretty table like the one in the handout. Before you proceed, uncomment the following truth table. We have introduced a new column that assigns to each row a number m0 to m15 that corresponds to the 16 minterms. 
+
+% \begin{displaymath}
+% \begin{array}{cccc|c|c}
+% A & B & C & D & I & minterm\\
+% \hline
+% 0 & 0 & 0 & 0 & 0 & m_0 \\
+% 0 & 0 & 0 & 1 & 0 & m_1\\
+% 0 & 0 & 1 & 0 & 0 & m_2\\
+% 0 & 0 & 1 & 1 & 1 & m_3\\
+% 0 & 1 & 0 & 0 & 0 & m_4\\
+% 0 & 1 & 0 & 1 & 0 & m_5\\
+% 0 & 1 & 1 & 0 & 1 & m_6\\
+% 0 & 1 & 1 & 1 & 1 & m_7\\
+% 1 & 0 & 0 & 0 & 0 & m_8\\
+% 1 & 0 & 0 & 1 & 0 & m_9\\
+% 1 & 0 & 1 & 0 & 1 & m_{10}\\
+% 1 & 0 & 1 & 1 & 1 & m_{11}\\
+% 1 & 1 & 0 & 0 & 1 & m_{12}\\
+% 1 & 1 & 0 & 1 & 1 & m_{13}\\
+% 1 & 1 & 1 & 0 & 1 & m_{14}\\
+% 1 & 1 & 1 & 1 & 1 & m_{15}
+% \end{array}
+% \end{displaymath}
+
+
+% Because Karnaugh maps work with Gray codes, the ordering within the cells is not sequential from $m_0$ to $m_{15}$$. Instead, if you uncomment and compile, you will see that certain cells are shifted. 
+
+% \begin{karnaugh-map}[4][4][1][$D$][$C$][$B$][$A$]
+%     \manualterms{m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15} % comment out this line when you are done editing minterms and maxterms
+    % \minterms{} % fill in the cells you want to add a 1, separated by a comma. For example, \minterms{1} would add a 1 in the m1 cell. 
+    % \maxterms{} % fill in the cells you want to add a 0. For example, \maxterms{5} would add a 0 in the m5 cell. 
+    % \implicant{0}{5} % replace the cells you want to create a group around
+    % \implicantedge{4}{12}{6}{14} % replace if you want a group to wrap around
+% \end{karnaugh-map}
+
+
+% Regardless of what option you chose, you need to provide the Boolean expression and explain how each term is derived by each colored group.
+
+%\section{From your K-map to Python}
+
+% Make sure you edit assignment2.py
+
+%\section{Extra credit}
+
+% Optionally, if you have chosen to do the extra credit, you should uncomment this section and work on your submission as in Part 2.
+
+
+
+\end{document}
